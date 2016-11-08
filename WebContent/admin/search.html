@@ -1,0 +1,81 @@
+<!-- Serach Page for Admin -->
+
+<!-- Navbar for all admins-->
+  <div ng-include="'partials/header.html'"></div>
+
+<!-- Accordion for searching users -->
+<accordion>
+	<accordion-group is-open="seachisOpen" style="overflow:visible">
+		<accordion-heading class="bg-primary">
+			Search Bar 
+			<div ng-show= "userData.length > 0" style="display:inline">
+				(Results: {{userData.length}})
+			</div>
+		</accordion-heading>
+		<div class="container-fluid">
+			<div class="row">
+				<form novalidate name="searchForm">
+					<div class="col-xs-2">
+						<input name="textInput" ng-model="searchValues.textInput" type="text" class="adminSearchText form-control input-sm" placeholder="Search for..." required>
+					</div>
+					<div class="col-xs-2">
+						<select name="typeSelected" ng-model="searchValues.typeSelected" ng-options="opt as opt.label for opt in searchOptions" class="adminSearchText form-control input-sm" required> </select>
+					</div>
+					<div class="col-xs-2">
+						<div class="adminSearchText">
+							<div
+								multi-select
+								input-model="roleOptions"
+								button-label="name"
+								item-label="name"
+								tick-property="ticked">
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-2">
+						<button ng-disabled="!searchForm.$valid" class="btn btn-primary btn-sm" ng-click="submitSearch(searchValues)">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</accordion-group>
+</accordion>
+<table ng-table="userTable" class="table">
+	<tr ng-repeat="user in $data" ng-class="{ 'emphasis': user.userStatus == 's' || user.userStatus == 'd'  }">
+		<td data-title="'Status'" sortable="'userStatus'">
+			{{user.userStatus | statusType}}
+		</td>
+		<td data-title="'End Date'" sortable="'endDate'">
+			{{user.endDate | date:'shortDate'}}
+		</td>
+		<td data-title="'Email'" sortable="'email'">
+			{{user.email}}
+		</td>
+		<td data-title="'Username'" sortable="'username'">
+			{{user.username}}
+		</td>
+		<td data-title="'First Name'" sortable="'firstname'">
+			{{user.firstname}}
+		</td>
+		<td data-title="'Last Name'" sortable="'lastname'">
+			{{user.lastname}}
+		</td>
+		<td data-title="'Role'" sortable="'roleTypeCode'">
+			{{user.roleTypeCode | roleType}}
+		</td>
+		<td>
+			<div class="btn-group" dropdown>
+				<button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+					User Status <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href ng-click="changeUserStatus('a', user.userId)">Activate</a></li>
+					<li><a href ng-click="changeUserStatus('s', user.userId)">Suspend</a></li>
+					<li><a href ng-click="changeUserStatus('d', user.userId)">Delete</a></li>
+					<li><a href ng-click="changeEndDate(user.userId)">Change End Date</a></li>
+				</ul>
+			</div>
+		</td>
+		
+	</tr>
+</table>

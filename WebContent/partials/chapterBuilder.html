@@ -1,0 +1,125 @@
+  <div ng-include="'partials/header.html'"></div>
+
+</div>
+
+<div class="container-fluid">
+	<div class="alert alert-success alert-dismissible" role="alert"
+		ng-show="showSuccess">
+		<strong>Success:&nbsp;</strong>{{confirmMsg}}
+		<button type="button" ng-click="showSuccess = false" class="close"
+			data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="alert alert-danger alert-dismissible" role="alert"
+		ng-show="showFailure">
+		<strong>Failure:&nbsp;</strong>{{confirmMsg}}
+		<button type="button" ng-click="showFailure = false" class="close"
+			data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="col col-lg-3 ">
+		<div class="panel panel-primary" >
+			<div class="panel-heading">Curriculum
+
+					<img src="resources/images/refresh.png" ng-click="refresh()" class="pull-right" style="cursor:pointer" >
+		
+		</div>
+			<div class="list-group" ng-repeat="chap in chapterData" ng-click="listClick($event, chap)">
+			
+				<div class="list-group-item chapTitle" ng-repeat="chap in chap" ng-show="showRow({{chap}})"  ng-class="{'text-primary': chapIdNum == chap.chapId}">
+<!-- 				 							 				<button ng-click="showRows = !showRows" ng-hide=" $middle">+</button>  
+ -->				 
+				  {{chap.chapTitle}}
+				  
+					<div class="list-group">
+					<div class="panel panel-default" ng-show=" (showRow({{chap[0]}}))">  <!--  ng-show=" (showRow({{chap[0]}}) && showRows)"-->
+						<div class="list-group-item exerciseTitle" ng-repeat="exer in chap">{{exer.subChapTitle}}</div>
+					</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 			 			<table ng-table="chapterTable" 
+				class="table table-hover table-condensed"
+				>
+				<tbody ng-repeat="chapterData in $data"
+					class="table table-condensed">
+					<tr ng-repeat="chap in chapterData"
+						ng-show="showRow({{chap.chapId}})" ng-click="chapterClick(chap)" >
+						<th class="info" data-title="'ID'" ng-class="{'text-primary': chapIdNum == chap.chapId}">
+							  <button ng-click="showRows()" ng-hide="showButton()"><strong>On</strong></button>  
+        					<button ng-click="hideRows()" ng-show="showButton()"><strong>Off</strong></button>
+							{{chap.chapId}}
+
+						</th>
+						<th class="info"  data-title="'Title'" ng-class="{'text-primary': chapIdNum == chap.chapId}">{{chap.chapTitle}}</th>
+						<th class="info"  data-title="'Description'" style="font-weight:normal;" ng-class="{'text-primary': chapIdNum == chap.chapId}" colspan="3">{{chap.chapDescr}}</th>
+
+						<th class="info" >
+						
+					</tr>
+
+ 					<tr ng-repeat="exer in chapterData" 
+						ng-show="showRow({{exer[$index].subChapId}})" ng-click="exerciseClick(exer[$index])">
+						
+						<td >&nbsp;</td>
+						<td style="font-size: .8em;" ng-repeat="subChapDescr in exer">{{subChapDescr}}</td>
+						<td style="font-size: .8em;" colspan="4">{{exer[$index].subChapDescr}}</td>
+
+						
+					</tr> 
+					<tr>
+					
+					</tr>
+				</tbody>
+
+			</table>  -->  
+			<div class="panel-footer">
+				<div>
+					<button class="btn btn-success btn-sm"
+						ng-click="addChapterFlag = true; editChapterFlag = false; showPane('chapter')">
+						+ Add Chapter
+						<!-- openDialog('partials/forms/addChapter.html') -->
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="col col-lg-9">
+		<div class="panel panel-default" ng-show="showChapterPane">
+				<div class="panel-heading breadcrumb">
+					<li><a ng-click="showPane('chapter', chapTitle, '', chapDescr)">{{chapTitle}}</a></li>
+					<li class="active"></li>
+									<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" ng-click="showChapterPane = false">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				</div>
+			<div ng-include="'partials/forms/addChapter.html'"></div>
+
+		</div>
+	</div>
+	<div class="col col-lg-9">
+		<div class="panel panel-default" ng-show="showSubChapPane">
+				<div class="panel-heading breadcrumb">
+					<li><a ng-click="showPane('chapter', chapTitle, '', chapDescr)">{{chapTitle}}</a></li>
+					<li class="active">{{selectedExercise.subChapTitle}}</li>
+									<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" ng-click="showSubChapPane = false">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				</div>
+
+			
+			<exercise-builder></exercise-builder>
+
+
+		</div>
+	</div>
+
+</div>
+</div>
+</div>

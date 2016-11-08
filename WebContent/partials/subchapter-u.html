@@ -1,0 +1,21 @@
+<h2 class="chapter text-center">{{subchapter.subChapTitle}}</h2>
+<h4 class="chapter text-center"><em>{{subchapter.subChapDescr}}</em></h4>
+
+<div ng-repeat="form in subchapterForm">
+	<h4><b>{{form.description}}</b></h4>
+	<h4>{{form.helpText}}</h4>
+	<input type="file" id="exampleInputFile" ng-file-select ng-model="form.files">
+	<button type="button" id="Download" class="btn btn-success" ng-disabled="form.userAnswer === null" ><a href="{{form.userAnswer}}">Download</a></button>
+
+</div>
+<button type="button" id="submit" class="btn btn-primary" ng-click="uploadQues()" >Submit </button>
+
+<!-- Alert success/failure message -->
+<div class="alert alert-success alert-dismissible" id="confirmation-success-u" role="alert"
+	ng-show="successU">
+	<strong>Success:&nbsp;</strong> File was successfully saved.
+</div>
+<div class="alert alert-danger alert-dismissible" id="confirmation-fail-u" role="alert"
+	ng-show="failureU">
+	<strong>Failure:&nbsp;</strong> Please select a file.
+</div>

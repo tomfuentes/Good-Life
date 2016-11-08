@@ -1,0 +1,17 @@
+<div class="nga-default nga-stagger nga-slide-right center-block bg-primary">
+	<h4 class="chapter text-center" ng-hide="chapterexpanded">Welcome User, Please select your chapter</h4>
+	<h4 class="chapter text-center" ng-show="chapterexpanded">Now select your subchapter</h4>
+	<ul class="navview" ng-repeat="chapter in chapterInfo" ng-click="expand(chapter)">
+		<li id="navlink">
+			{{chapter.chapTitle}}
+			<span class="caret"></span>
+		</li>
+		<li class="nga-default nga-stagger nga-slide-right" ng-show="chapter.show" ng-animate-children>
+			<ul>
+				<li ng-repeat="subChapters in chapter.subchapters">
+					<a id="navlink" href ng-click="passSubChapter(subChapters)">{{subChapters.subChapTitle}}</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>

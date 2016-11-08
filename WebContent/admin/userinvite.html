@@ -1,0 +1,28 @@
+<!-- HTML Page that shows the admin console -->
+<div ng-include="'partials/header.html'"></div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<h3>Please enter email below to send an invite.</h3>
+		
+			<form novalidate class="usersignup form-inline" name="userform">
+				<label>E-mail </label>
+				<input type="email" id="invite" ng-model="user.email" required /><br />
+				<button type="submit" ng-disabled="userform.$invalid" ng-click="invite(user)" class="btn btn-info" id="invite">
+				Invite</button>
+				
+				<!-- Alert success/failure message -->
+				<div class="alert alert-success alert-dismissible" id="confirmation-success-inv" role="alert"
+					ng-show="successInv">
+					<strong>Success:&nbsp;</strong> Invitation code was sent.
+				</div>
+				<div class="alert alert-failure alert-dismissible" id="confirmation-failure-inv" role="alert"
+					ng-show="failureInv">
+					<strong>Failure:&nbsp;</strong> Invitation code was not sent.
+				</div>
+			</form>
+			
+		</div>
+	</div>
+</div>

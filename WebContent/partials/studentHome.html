@@ -1,0 +1,71 @@
+<!-- HTML Page that shows the admin console -->
+<div ng-include="'partials/generalheader.html'"></div>
+
+<div class="row"></div>
+
+<!-- left pane  -->
+<div class="col-md-2">
+  <h3 class="text-left leftmargin">Welcome, John!</h3>
+<!-- div class="col-xs-6"> -->
+    <a href="" class="thumbnail">
+      <img src="http://free.clipartof.com/450/170-Cool-Purple-Avatar-Character-Wearing-Shades-Free-Vector-Clipart-Illustration.jpg" alt="...">
+    </a>
+    <p class="text-center"><a class="btn btn-primary btn-sm" href="" role="button">Edit Profile Picture</a></p>
+    
+    <!-- Badges -->
+    <h3 class="text-center">Accomplishments</h3>
+     <a href="" class="thumbnail">
+      <img src="resources/images/badges/bronze-badge.png" alt="bronze">
+    </a>
+</div>
+ 	
+<!-- center pane -->
+<div class="col-md-10" >
+<h3 class="text-center leftmargin">Keep up the good work!</h3>
+<div class="progress" id="progress">
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{progressValue}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progressValue}}%">
+    {{progressValue}}%
+  </div>
+</div>
+    
+<div class="jumbotron">
+    <!-- Notifications -->
+    <div class="leftpadding">
+	    <h3>Notifications</h3>
+	   	<ul class="text-info" id="notifications">
+	   		<li>Your short answer in chapter 1 was approved!</li>
+	   		<li>You have been added to Roberto's student list</li>
+	   	</ul>
+   	</div>
+    
+	<dl class="dl-horizontal">
+	  <dt>Name</dt><dd>John Smith</dd>
+	  <dt>Role</dt><dd>Student</dd>
+	  <dt>Location</dt><dd>Chicago, Illinois</dd>
+	  <dt>Member since</dt><dd>03/2015</dd>
+	  <dt>About Me</dt><dd>Say Something about yourself!</dd>
+	</dl>
+
+  <p><a class="btn btn-primary btn-sm" href="" role="button">Edit Profile Information</a></p>
+</div>
+
+</div>
+
+<!-- right pane
+<div class="col-md-2">
+	<h3 class="text-center">Badges</h3>
+    
+     <a href="" class="thumbnail">
+      <img src="http://free.clipartof.com/150/166-CyBorg-Drone-Avatar-Creature-Free-Vector-Clipart-Illustration.jpg" alt="...">
+    </a>
+    
+    <a href="" class="thumbnail">
+      <img src="http://free.clipartof.com/150/165-Ninja-Avatar-Character-With-Ninja-Stars-And-A-Sword-Free-Vector-Clipart-Illustration.jpg" alt="...">
+    </a>
+    
+     <a href="" class="thumbnail">
+      <img src="http://free.clipartof.com/150/164-Policeman-Avatar-Character-With-A-Whistle-Free-Vector-Clipart-Illustration.jpg" alt="...">
+    </a>
+</div>
+-->
+

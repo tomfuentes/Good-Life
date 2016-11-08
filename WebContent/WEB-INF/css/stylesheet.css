@@ -1,0 +1,29 @@
+.container {
+	padding-top: 10px;
+	margin-left: 50px;
+	width: 700px;
+}
+
+.form-horizontal {
+	width: 100%;
+}
+
+input[type="text"] {
+	height: 25px;
+}
+
+.navbar .nav>li>a {
+	color: #000000;
+}
+
+.form-horizontal .control-label {
+	text-align: left;
+}
+
+.errorblock {
+	color: #ff0000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+}

@@ -1,0 +1,15 @@
+<div ng-include="'partials/generalheader.html'"></div>
+
+<div>
+	<div class = "row">
+		<div class = "col-md-3 v-navbar">
+			<!-- Chapter Navigation -->
+			<chapter-navigation user-id="userId" return-value="subChapterClicked"></chapter-navigation>
+		</div>
+
+		<!-- SubChapter Selectiom -->
+		<div class = "col-md-8">
+			<subchapter-view subchapter="subChapterSelected" subchapter-type="subChapterType" subchapter-form="subChapterForm" userid="userId"> </subchapter-view>
+		</div>
+	</div>
+</div>

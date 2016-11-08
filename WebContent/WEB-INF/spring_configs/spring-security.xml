@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<!-- No Security applied on images and js files under the root/resources 
+		folder -->
+	<http security="none" pattern="/resources/**" />
+	<http auto-config="true">
+		<intercept-url pattern="/secured/*"
+			access="ROLE_STUDENT,ROLE_FACILITATOR,ROLE_SUPERADMIN,ROLE_MODERATOR,ROLE_TRAINER" />
+		<intercept-url pattern="/secured/user/*"
+			access="ROLE_STUDENT,ROLE_FACILITATOR,ROLE_SUPERADMIN,ROLE_MODERATOR,ROLE_TRAINER" />
+		<intercept-url pattern="/secured/facilitator/*"
+			access="ROLE_FACILITATOR,ROLE_SUPERADMIN,ROLE_MODERATOR,ROLE_TRAINER" />
+		<intercept-url pattern="/secured/su/*" access="ROLE_SUPERADMIN" />
+		<form-login login-page="/login.jsp" default-target-url="/welcome"
+		authentication-failure-url="/loginfailed" />
+		<logout logout-success-url="/logout" />
+	</http>
+
+
+	<authentication-manager>
+		<authentication-provider user-service-ref = "loginService">
+			<password-encoder ref="passwdEncoder" />
+		</authentication-provider>
+	</authentication-manager>
+
+	<beans:bean id="webSecurityExpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+
+	<beans:bean id="passwdEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+</beans:beans>

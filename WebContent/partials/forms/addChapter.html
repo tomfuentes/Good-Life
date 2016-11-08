@@ -1,0 +1,73 @@
+
+<!--  <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$close()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add New Chapter</h4>
+      </div>-->
+	<form class="form-horizontal ng-pristine ng-valid" name="addChapterFm">
+		<tabset> <tab heading="Chapter Information" class="h5">
+		<div class="modal-body">
+		<div class="form-group">
+			<label class="col-md-2 ">Chapter Title</label>
+			<div class="col-md-4">
+				<input type="text" ng-model="chapTitle" name="chapTitle"
+					class="form-control ng-pristine ng-valid" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2">Chapter Description</label>
+			<div class="col-md-4">
+				<input type="text" ng-model="chapDescr" name="chapDescr"
+					class="form-control ng-pristine ng-valid">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2">Chapter Order</label>
+			<div class="col-md-4">
+				<select ng-model="chapId" name="chapId" ng-init="chapId = orderOptions[0]"
+					class="form-control" ng-options="orderOption.id for orderOption in orderOptions">
+					
+				
+					</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2">Published</label>
+			<div class="col-md-1">
+				<input type="checkbox" ng-model="exPub" name="exPub"
+					class="ng-pristine ng-valid">
+			</div>
+		</div>
+		</div>
+		</tab> <tab ng-repeat="tab in tabs" heading="{{tab.title}}"
+			active="tab.active" disabled="tab.disabled"> {{tab.content}} </tab> <tab
+			heading="Upload Pages" class="h5 bg-info">
+
+		<div class="form-group">
+			<label class="col-md-1 control-label"><a
+				ng-click="openCarousel('partials/forms/pdfViewer.html', 'partials/forms/deleteConfirm.html')">Pages</a></label><br />
+
+		</div>
+		</tab> </tabset>
+
+		<div class="panel-footer">
+			<div class="form-group">
+				<div>
+				<span class="col-md-10">
+					<button class="btn btn-success btn-sm"
+						ng-click="addRow(chapTitle, chapDescr, addChapterFm)" ng-show="addChapterFlag">Add</button>
+					<button class="btn btn-success btn-sm"
+						ng-click="editRow(addChapterFm)" ng-show="editChapterFlag">Update</button>
+
+				</span>
+				<span>
+					<button class="btn btn-primary btn-sm"
+						ng-click="showPane('subchapter', chapTitle, '', '', 'add')">Add
+						
+						Exercise</button>
+					<button class="btn btn-sm btn-danger deleteIcon"
+						ng-click="openDialog('partials/forms/deleteChapter.html', addChapterFm)" ng-show="editChapterFlag">&nbsp;&nbsp;&nbsp;&nbsp;Delete</button>
+				</span>
+				</div>
+			</div>
+		</div>
+	</form>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div>
+		<form class="form-horizontal ng-pristine ng-valid"
+			name="addExerciseFm">
+
+			<tabset> <tab heading="Exercise Information" class="h5">
+				<div class="modal-body">
+			
+			<div class="form-group">
+				<label class="col-md-2">Title</label>
+				<div class="col-md-4">
+					<input type="text" ng-model="selectedExercise.subChapTitle" name="subChapTitle"
+						class="form-control ng-pristine ng-valid" required />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2">Description</label>
+				<div class="col-md-4">
+					<input type="text" ng-model="selectedExercise.subChapDescr" name="subChapDescr"
+						class="form-control ng-pristine ng-valid">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2">Order</label>
+				<div class="col-md-4">
+					<select ng-model="exOrder" name="exOrder" ng-init="exOrder = ex_order"
+					class="form-control" ng-options="orderOption.id for orderOption in orderOptions">
+					
+				
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2">Published</label>
+				<div class="col-md-1">
+					<input type="checkbox" ng-model="selectedExercise.published" name="chapPub"
+						class="ng-pristine ng-valid">
+				</div>
+			</div>
+
+			</div>
+</tab> 
+<tab ng-repeat="tab in tabs" heading="{{tab.title}}"
+				active="tab.active" disabled="tab.disabled"> {{tab.content}} </tab>
+			<tab heading="Questions" class="h5 bg-info">
+						<div class="modal-body">
+				<div class="form-group">
+				<label class="col-md-2"> Question Type</label>
+				<div class="col-md-4">
+
+					<select class="form-control">
+						<option id="Select"></option>
+						<option id="1">Multiple Choice</option>
+						<option id="2" selected="selected">Short Answer</option>
+						<option id="3">Upload File</option>
+					</select>
+				</div>
+			</div>
+				<div class="form-group">
+
+					<label class="col-md-2">Question:</label>
+					<div class="col-md-8">
+						<input type="text"
+							class="form-control ng-pristine ng-valid ng-touched"
+							name="questionText" ng-model="questionText">
+					</div>
+					<div class="col-md-1">
+						<input type="button" ng-click="addItem(questionText)" value="Add Question"
+							class="btn btn-sm btn-info">
+
+					</div>
+				</div>
+
+				<div class="form-group">
+
+					<div class="col-md-11"
+						ng-repeat="question in questions.data"
+						id="question{{question.id}}">
+						<div class="alert alert-info">
+						{{question.text}}
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close" ng-click="deleteItem($index)">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			</tab> 
+			</tabset>
+
+			<div class="panel-footer">
+				<div>
+					<div>
+					<span class="col-md-10">
+					<button class="btn btn-success btn-sm"
+							ng-click="submitExercise(addExerciseFm)" ng-show="addExFlag">Add</button>
+							
+				<button class="btn btn-success btn-sm"
+							ng-click="updateExercise(addExerciseFm)" ng-show="editExFlag">Update</button>
+
+						
+					</span>
+					<span>	
+											<input type="button" class="btn btn-sm btn-info" value="Preview"
+							ng-click="openDialog('partials/forms/previewExercise.html', addExerciseFm, 'lg')"></input>	
+							<button class="btn btn-sm btn-danger deleteIcon"
+							ng-click="openDialog('partials/forms/deleteConfirm.html', addExerciseFm)" ng-show="editExFlag">&nbsp;&nbsp;&nbsp;&nbsp;Delete</button>
+					</span>
+					</div>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+
+	</div>
+
+</body>
+</html>

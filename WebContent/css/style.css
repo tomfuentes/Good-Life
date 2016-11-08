@@ -1,0 +1,144 @@
+/* ====================================================
+   Login Page Style
+ ==================================================== */
+@font-face {
+    font-family: 'honey_scriptsemibold';
+    src: url('../fonts/honeyscript-semibold-webfont.eot');
+    src: url('../fonts/honeyscript-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/honeyscript-semibold-webfont.woff2') format('woff2'),
+         url('../fonts/honeyscript-semibold-webfont.woff') format('woff'),
+         url('../fonts/honeyscript-semibold-webfont.ttf') format('truetype'),
+         url('../fonts/honeyscript-semibold-webfont.svg#honey_scriptsemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+body {
+	background-color: #fff;
+	font-family: 'Times New Roman';
+	color: #808080;
+}
+.logo{
+	width: 100%;
+	margin-bottom: 30px;
+	font-family: 'honey_scriptsemibold';
+	font-size: 65px;
+	color: #428BCA;
+}
+.wrap {
+	width: 250px;
+	height: auto;
+	margin: auto;
+	margin-top: 10%;
+}
+.avatar {
+	width: 100%;
+	margin: auto;
+	width: 65px;
+	border-radius: 100px;
+	height: 65px;
+	background: #448ed3;
+	position: relative;
+	bottom: -15px;
+	background-color: #448ed3;
+}
+.avatar img {
+	width: 65px;
+	height: 65px;
+	border-radius: 100px;
+	margin: auto;
+	
+	display: block;
+}
+#top {
+	border: thin solid #428BCA;
+	background: #D9EDF7;
+  	font-family:'Times New Roman' ;
+  	font-weight:700 ;
+	display: block;
+	height: 50px;
+	outline: none;
+	margin: auto;
+	padding: 6px 12px 0px 12px;
+	width: 100%;
+	border-radius: 7px 7px 0px 0px;
+	color: #000000;
+	border-bottom-style: none;
+}
+
+#mid {
+	border: thin solid #428BCA;
+	background: #D9EDF7;
+  	font-family:'Times New Roman' ;
+  	font-weight:700 ;
+	display: block;
+	height: 50px;
+	outline: none;
+	margin: auto;
+	padding: 6px 12px 0px 12px;
+	width: 100%;
+	color: #000000;
+	border-bottom-style: none;
+}
+#bot {
+	border: thin solid #428BCA;
+	background: #D9EDF7;
+  	font-family:'Times New Roman' ;
+  	font-weight:700 ;
+	display: block;
+	height: 50px;
+	outline: none;
+	margin: auto;
+	padding: 6px 12px 0px 12px;
+	width: 100%;
+	border-radius: 0px 0px 7px 7px;
+	color: #000000;
+}
+#solo {
+	border: thin solid #428BCA;
+	background: #D9EDF7;
+  	font-family:'Times New Roman' ;
+  	font-weight:700 ;
+	display: block;
+	height: 50px;
+	outline: none;
+	margin: auto;
+	padding: 6px 12px 0px 12px;
+	width: 100%;
+	border-radius: 7px 7px 7px 7px;
+	margin-bottom: 10px;
+	color: #000000;
+}
+.forgot_link {
+	color: #0000ff;
+	text-decoration: none;
+	font-family: 'Times New Roman';
+	font-size: 11px;
+	position: relative;
+	left: 193px;
+	top: -36px;
+}
+.wrap button {
+	width: 100%;
+	border-radius: 7px;
+	background-color: #448ed3;
+	text-decoration: center;
+	border: 1px solid;
+	color: #fff;
+	margin-top: 0px;
+	padding-top: 14px;
+	padding-bottom: 14px;
+	outline: none;
+	font-family: 'Times New Roman';
+	font-size: 13px;
+	cursor: pointer;
+}
+.wrap button:hover{
+	font-color: #ffffff;
+}
+.errorblock{
+	font-size: 16px;
+	border: 1px solid;
+	color: #FF0004;
+	text-align: center;
+}

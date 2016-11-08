@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+ 
+<hibernate-configuration>
+    <session-factory>
+		<mapping class="com.goodlife.model.Users" />
+		<mapping class="com.goodlife.model.SuperAdmin" />
+		<mapping class="com.goodlife.model.Instructor" />
+		<mapping class="com.goodlife.model.Student" />
+		<mapping class="com.goodlife.model.UserStatus" />
+		<mapping class="com.goodlife.model.Chapter" />
+		<mapping class="com.goodlife.model.ChapterPage" />
+		<mapping class="com.goodlife.model.SubChapter" />
+		<mapping class="com.goodlife.model.MultiChoiceQ" />
+		<mapping class="com.goodlife.model.MultiChoiceList" />
+		<mapping class="com.goodlife.model.MultiChoiceOption" />
+		<mapping class="com.goodlife.model.MultiChoiceUserAns" />
+		<mapping class="com.goodlife.model.Notification" />
+		<mapping class="com.goodlife.model.UploadFileQ" />
+		<mapping class="com.goodlife.model.UploadedAnswer" />
+		<mapping class="com.goodlife.model.ShortAnswerQ" />
+		<mapping class="com.goodlife.model.ShortAnswerUserAnswer" />
+		
+		<!-- <mapping class="com.goodlife.model.CommentFlag" /> -->
+		<mapping class="com.goodlife.model.UploadAnsFlag" />
+		<!--  <mapping class="com.goodlife.model.UploadPostFlag" />
+		<mapping class="com.goodlife.model.CommentLike" /> -->
+		<mapping class="com.goodlife.model.UploadAnsLike" />
+		<!-- <mapping class="com.goodlife.model.UploadPostLike" /> -->
+		
+
+    </session-factory>
+</hibernate-configuration>

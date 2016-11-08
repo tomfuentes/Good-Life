@@ -1,0 +1,33 @@
+<h2 class="chapter text-center">{{subchapter.subChapTitle}}</h2>
+<h4 class="chapter text-center"><em>{{subchapter.subChapDescr}}</em></h4>
+
+<div ng-repeat="form in subchapterForm">
+	<h4><b>{{form.question}}</b></h4>
+	<h4>{{form.helpText}}</h4>
+	<form name="myForm">
+		<textarea class="form-control" name="myText" rows="5" maxlength="1500"
+				  ng-maxlength="1500" ng-model="form.userAnswer"></textarea>
+		<p id="charCount">{{1500-myForm.myText.$viewValue.length}} characters remaining</p>
+		<!-- messages for when minimum, maximum characters are reached. -->
+		<div class="alert alert-warning alert-dismissible" role="alert" id="minLen"
+			ng-show="myForm.myText.$viewValue.length < 150">
+			<strong>Min Length:&nbsp;</strong> Please type at least 150 characters.
+		</div>	
+		<div class="alert alert-info alert-dismissible" role="alert" id="maxLen"
+			ng-show="myForm.myText.$viewValue.length >= 1500">
+			<strong>Max Length:&nbsp;</strong> You have reached maximum 1500 characters !
+		</div>
+    </form>
+</div>
+<button type="button" id="save" class="btn btn-success" ng-click="postShortAns(false)" >Save </button>
+<button type="button" id="submit" class="btn btn-primary" ng-click="postShortAns(true)" >Submit </button>
+
+<!-- Alert success/failure message : failure when any answer is less than minimum character limit.-->
+<div class="alert alert-success alert-dismissible" id="confirmation-success-s" role="alert"
+	ng-show="successS">
+	<strong>Success:&nbsp;</strong> Your answers were submitted.
+</div>
+<div class="alert alert-danger alert-dismissible" id="confirmation-fail-s" role="alert"
+	ng-show="failureS">
+	<strong>Failure:&nbsp;</strong> Please type at least 150 characters for each answer.
+</div>

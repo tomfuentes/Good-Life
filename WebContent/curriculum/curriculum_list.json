@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Chapter 1",
+    "subChapters": [
+      "Love",
+      "Strength"
+    ]
+  },
+  {
+    "name": "Chapter 2",
+    "subChapters": [
+      "Hate",
+      "Power"
+    ]
+  }
+]

@@ -1,0 +1,40 @@
+<!-- <div class="nga-default nga-stagger nga-slide-right"> -->	
+
+<h2 class="chapter text-center">{{subchapter.subChapTitle}}</h2>
+<h4 class="chapter text-center"><em>{{subchapter.subChapDescr}}</em></h4>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="nga-default nga-stagger nga-slide-right">
+			<ol>
+				<li ng-repeat="form in subchapterForm">
+					<h4 class="chapter"><b>{{form.quesText}}</b></h4>
+					<h4 class="chapter">{{form.helpText}}</h4>
+					<form name="opForm">
+						<div class="radio" ng-repeat="optionForm in form.options" ng-init="form.userAnswer">
+							<label>
+								<input class="test" type="radio" name="pageSet" ng-model="form.userAnswer" ng-value="{{optionForm.optionId}}" /><span class="chpater" ng-bind="optionForm.choiceText"></span>
+							</label>
+						</div>
+					</form>
+				</li>
+			</ol>
+		</div>
+	</div>
+	<div class="row">
+		<!-- <div class="col-md-2"> -->
+			<button type="button" id="submit" class="btn btn-primary pull-left" ng-click="submitPostMultiChoice()" >
+			Submit </button>
+			
+			<!-- Alert success/failure message -->
+			<div class="alert alert-success alert-dismissible" id="confirmation-success-m" role="alert"
+				ng-show="successM">
+				<strong>Success:&nbsp;</strong> Your answers were submitted.
+			</div>
+			<div class="alert alert-danger alert-dismissible" id="confirmation-fail-m" role="alert"
+				ng-show="failureM">
+				<strong>Failure:&nbsp;</strong> Error in submit.
+			</div>
+		<!-- </div>-->
+	</div>
+</div>

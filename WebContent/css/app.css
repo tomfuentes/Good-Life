@@ -1,0 +1,154 @@
+/* app css stylesheet */
+
+/*
+	Had to aligin everyhting
+	to the new search bar
+*/
+input.adminSearchText {
+	float: left;
+}
+select.adminSearchText {
+	float: left;
+}
+div.adminSearchText {
+	float:left;
+}
+.submit-form input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+}
+
+.test input[type="radio"] {
+  display:none;
+}
+
+.test input[type="radio"] + label {
+  display:none;
+  background: url(./img/5_knowledge.png);
+}
+/* ====================================================
+   IMAGE/ICON STYLES
+   ==================================================== */  
+   
+.deleteIcon {
+	background-image: url('../resources/images/Delete_Icon.png');
+	background-repeat: no-repeat;
+}	
+
+.refreshIcon {
+	background-image: url('../resources/images/refresh.png');
+	background-repeat: no-repeat;
+}
+
+/*h1,h2,h3,h4,h5,span.chapter {
+	color: #B0B0B0;
+}*/
+
+.bookImage {
+	background-color:#FFF;
+	color: #000;
+}
+ul.navview>li, ul.navview>li>ul {
+	color: #FFF;
+	list-style-type: none;
+	padding: 0px;
+	margin-left: 20px;
+}
+.ng-table tr.emphasis td {
+	background-color: #DDD;
+	font-weight: bold;
+}
+
+/* ====================================================
+   STUDENT CURRICULUM VIEW STYLES
+   ==================================================== */  
+.bg-primary>a, .bg-primary{
+	color: #FFF;
+	border-radius:5px;
+}
+li#navlink {
+	font-weight: bold;
+}
+.navlink, ul.navlink>li>a, a#navlink {
+	text-decoration: none;
+	color: #FFF;
+}
+ul#navlink:hover, li#navlink:hover, #navlink>a:hover, ul.navlink>li>a:hover, a.navlink:hover,
+a#navlink:hover {
+	text-decoration: none;
+	/*font-weight: bold;*/
+	color: #155183;
+	background-color: transparent;
+}
+.v-navbar {
+	height: 100%;
+	overflow:hidden;
+}
+button#submit, button#save, input#upload, button#invite {
+	padding: 5px;
+	margin: 20px 0px;
+	float: left;
+}
+button#save {
+	margin-right: 20px;
+}
+input#invite {
+	margin-left: 20px;
+}
+textarea.form-control {
+	margin: 20px 0px;
+	padding: 5px;
+	width: 80%;
+}
+#confirmation-success-m, #confirmation-success-s, #confirmation-success-u, #confirmation-failure-inv,
+#confirmation-fail-m, #confirmation-fail-s, #confirmation-fail-u, #confirmation-success-inv {
+	width: 500px;
+	height: 30px;
+	float: left;
+	margin: 20px;
+	padding: 5px;
+}
+#confirmation-success-inv, #confirmation-failure-inv {
+	width: 60%;
+}
+#maxLen, #minLen {
+	width: 500px;
+	height: 30px;
+	padding: 5px;
+}
+#charCount {
+	font-size: 12px;
+	margin: 0px;
+}
+#chapterPage {
+	padding-left: 20px;
+}
+.leftmargin {
+	padding-left: 20px;
+}
+#progress {
+	height: 50px;
+}
+ul#notifications {
+    list-style-type: circle;
+}
+.leftpadding {
+	padding: 0 100px;
+}
+.rightalign {
+	text-align: right;
+}
+/* ====================================================
+	CURRICULUM BUILDER
+	==================================================== */
+.chapTitle {
+	font-weight: bold;
+}
+.exerciseTitle {
+	font-weight: normal;
+}
+/*
+Usersignup CSS
+*/
+.usersignup input.ng-invalid.ng-touched {
+	background-color: #FA787E;
+}

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xm="http://www.mulesoft.org/schema/mule/xml"
+	xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:management="http://www.mulesoft.org/schema/mule/management"
+	xmlns:https="http://www.mulesoft.org/schema/mule/https" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd 
+         http://www.mulesoft.org/schema/mule/stdio http://www.mulesoft.org/schema/mule/stdio/current/mule-stdio.xsd 
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd  
+         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+         http://www.mulesoft.org/schema/mule/management http://www.mulesoft.org/schema/mule/management/current/mule-management.xsd  
+         http://www.mulesoft.org/schema/mule/https http://www.mulesoft.org/schema/mule/https/3.3/mule-https.xsd
+         http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd">
+
+	<description>
+		The following section describes the components for the
+		Mule service layer
+	</description>
+
+	<context:property-placeholder location="classpath:mymessages.properties" />
+	
+	
+	<spring:beans>
+
+		<!-- Bean to store reference to MuleContext so that it is available to 
+			Mule managed beans and spring managed beans where MuleContext could not be 
+			injected to -->
+		<!--spring:bean id="muleContextHolder" scope="singleton"
+			class="com.apricot.MuleContextHolder">
+		</spring:bean-->
+
+		<spring:import resource="classpath:${mulebeans}" />
+	</spring:beans>
+
+
+
+	<!-- Spring beans -->
+
+	<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+		xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+			
+		<bean id="exporter" class="org.springframework.jmx.export.MBeanExporter">
+			<property name="assembler" ref="assembler" />
+			<property name="namingStrategy" ref="namingStrategy" />
+			<property name="autodetect" value="true" />
+			<property name="registrationBehaviorName"
+				value="REGISTRATION_REPLACE_EXISTING" />
+		</bean>
+
+		<bean id="jmxAttributeSource"
+			class="org.springframework.jmx.export.annotation.AnnotationJmxAttributeSource" />
+	
+		<!-- will create management interface using annotation metadata -->
+		<bean id="assembler"
+			class="org.springframework.jmx.export.assembler.MetadataMBeanInfoAssembler">
+			<property name="attributeSource" ref="jmxAttributeSource" />
+		</bean>
+	
+		<!-- will pick up the ObjectName from the annotation -->
+		<bean id="namingStrategy"
+			class="org.springframework.jmx.export.naming.MetadataNamingStrategy">
+			<property name="attributeSource" ref="jmxAttributeSource" />
+		</bean>
+
+	</beans>
+
+	<!-- JMX Management -->
+	<management:jmx-default-config registerLog4j="false"/>
+	<management:jmx-mx4j-adaptor jmxAdaptorUrl="${JMX.URL}"
+		login="admin" password="admin" />
+	
+</mule>

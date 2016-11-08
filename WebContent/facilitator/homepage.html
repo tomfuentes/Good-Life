@@ -1,0 +1,32 @@
+<!-- HTML Page that shows the facilitator profile -->
+
+
+<!-- Get Navbar for Facilitator -->
+<div ng-include="'facilitator/header.html'"></div>
+
+<div class="row">
+
+  <!-- Left Pane with Name and Profile Pic-->
+  <div class="col-md-2">
+    <h3 class="text-left leftmargin">Welcome, {{facilitator.name}}!</h3>
+      <a href="" class="thumbnail">
+        <img src="http://free.clipartof.com/450/170-Cool-Purple-Avatar-Character-Wearing-Shades-Free-Vector-Clipart-Illustration.jpg" alt="...">
+      </a>
+      <p class="text-center"><a class="btn btn-primary btn-sm" href="" role="button">Edit Profile Picture</a></p>
+  </div>
+    
+  <!-- center pane -->
+  <div class="col-md-10" >    
+    <div class="jumbotron">
+
+      <dl class="dl-horizontal">
+        <dt>Name</dt><dd>{{facilitator.frst_nm}} {{facilitator.lst_nm}}</dd>
+        <dt>Location</dt><dd> {{facilitator.frst_nm}} {{facilitator.lst_nm}}</dd>
+        <dt>About Me</dt><dd>{{facilitator.abt_me}}</dd>
+      </dl>
+
+      <button type="button" class="btn btn-primary" ng-click="editProfile">Edit Profile</button>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/bootstrap2.min.css" rel="stylesheet" media="screen">
+    
+    <link href="../css/style.css" rel="stylesheet" media="screen">
+	<link rel="stylesheet" href="../css/jquery-ui.css" />
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/subchapterbuilder.js"></script>
+    
+    <script type="text/javascript" src="../js/jquery.js"></script>	
+    <script type="text/javascript" src="../js/bootstrap2.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+
+    <!-- using handlebars for templating, but DustJS might be better for the current purpose -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0-rc.3/handlebars.min.js"></script>
+
+	<title>
+		Multiple Choice Subchapter
+	</title>
+	
+</head>
+<body>
+
+	<!--[if lt IE 9]>
+	<b class="text-error">All components may not work correctly on IE 8 or below </b><br/><br/>
+	<![endif]-->
+	<a href="chapterbuilder.html" style="float:right; margin:10px 30px">back to chapter</a>
+    <legend>Subchapter Builder
+		<input type="text" class="input-large span7" placeholder="Type Subchapter title here" id="form-title" style="margin-left:20px"></input>
+    </legend>
+
+	<!-- List of controls rendered into Bootstrap Tabs -->
+	<!-- <div class="row-fluid">-->
+	  <div id="listOfFields" class="span3 well tab-content">
+  
+        <div class="selectorField draggableField radiogroup">
+			<label class="control-label" style="vertical-align:top">Edit Question Text</label></br>
+			<label class="control-label helpText" style="vertical-align:top">Edit Help Text</label></br>
+			<div style="display:inline-block;" class="ctrl-radiogroup">
+            <form>
+				<label class="radio"><input type="radio" name="radioField" value="option1">Edit option 1</input></label>
+				<label class="radio"><input type="radio" name="radioField" value="option2">Edit option 2</input></label>
+				<label class="radio"><input type="radio" name="radioField" value="option3">Edit option 3</input></label>
+			</form>
+            </div>
+		</div>
+      </div> <!-- end of listOfFields -->
+      
+      <!-- Preview button -->
+	  <div class="row-fluid" style="margin-left:40px;">	
+	    <div class="span12">
+    	    <input type="button" class="btn btn-success" value="Preview" onclick="preview();"></input>
+		    <input type="button" class="btn btn-warning" value="Save as Draft"></input>
+		    <input type="button" class="btn btn-danger" value="Publish" onclick="preview();"></input>
+        </div>
+	  </div>
+
+	<!-- End of list of controls -->
+	
+	<!-- 
+		Below we have the columns to drop controls
+			-- Grid system used for rendering columns 
+			-- Columns can be simply added by defining a div with droppedFields class
+	-->
+	<div class="span8" id="selected-content">
+	  <div class="row-fluid">
+        <p name="preview" style="margin-left:20x; padding-left:18px;">Preview</p>
+		<div id="selected-action-column" class="span11 well action-bar droppedFields" style="min-height:100px">
+			<button class="btn btn-primary">Submit</button>
+        </div>
+	  </div>
+	</div>
+	</div>
+
+  </div>
+
+<!-- 
+	Starting templates declaration
+---> 
+
+<script id="control-customize-template" type="text/x-handlebars-template">
+	<div class="modal-header">
+		<!--<h3>{{header}}</h3>-->
+        <label style="vertical-align:top; font-weight:bold">Multiple Choice Question</label>
+	</div>
+	<div class="modal-body">
+		<form id="theForm" class="form-horizontal">
+			<input type="hidden" value="{{type}}" name="type"></input>
+			<input type="hidden" value="{{forCtrl}}" name="forCtrl"></input>
+			<p><label class="control-label">Question</label> <input type="text" name="label" value=""></input></p>
+			<p><label class="control-label helpText">Help Text</label> <input type="text" name="label" value=""></input></p>
+			{{{content}}}
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" data-dismiss="modal" onclick='save_customize_changes()'>Save changes</button>
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true" onclick='delete_ctrl()'>Delete</button>
+	</div>
+</script>
+
+<script id="textbox-template" type="text/x-handlebars-template">
+	<p><label class="control-label">Description</label> <input type="text" name="placeholder" value=""></input></p>
+</script>
+
+<script id="combobox-template" type="text/x-handlebars-template">
+	<p><label class="control-label">Options</label> <textarea name="options" rows="5"></textarea></p>
+</script>
+
+<!-- End of templates -->
+
+
+<script>
+	$(document).ready(docReady); 
+</script>
+</body>
+</html>
